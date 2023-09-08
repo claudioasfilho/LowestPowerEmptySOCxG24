@@ -99,10 +99,10 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
       sc = sl_bt_advertiser_create_set(&advertising_set_handle);
       app_assert_status(sc);
 
-      // Generate data for advertising
-      sc = sl_bt_legacy_advertiser_generate_data(advertising_set_handle,
-                                                 sl_bt_advertiser_general_discoverable);
-      app_assert_status(sc);
+//      // Generate data for advertising
+//      sc = sl_bt_legacy_advertiser_generate_data(advertising_set_handle,
+//                                                 sl_bt_advertiser_general_discoverable);
+//      app_assert_status(sc);
 
       // Set advertising interval to 100ms.
       sc = sl_bt_advertiser_set_timing(
@@ -132,13 +132,10 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
     // This event indicates that a connection was closed.
     case sl_bt_evt_connection_closed_id:
       // Generate data for advertising
-      sc = sl_bt_legacy_advertiser_generate_data(advertising_set_handle,
-                                                 sl_bt_advertiser_general_discoverable);
-      app_assert_status(sc);
 
-      // Restart advertising after client has disconnected.
-      sc = sl_bt_legacy_advertiser_start(advertising_set_handle,
-                                         sl_bt_advertiser_connectable_scannable);
+      fill_adv_packet(&sData, 0x06, 0x02FF, num_presses, last_press, "CustomAdvDemo1234567");
+      start_adv(&sData, advertising_set_handle);
+
       app_assert_status(sc);
       break;
 
