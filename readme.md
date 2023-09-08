@@ -35,6 +35,12 @@ sl_mx25_flash_shutdown();
     // manually to resemble the production 128KB OPN.
     SYSCFG->DMEM0RETNCTRL = 32766;
 
+//Disable Debug while in em2
+
+slcp -> Energy Management Unit SW component -> Configure -> Disable Allow debugger to remain connected in EM2 
+
+
+
 //Drop the WSTK Voltage to 3V
 
 Console -> Admin tab -> target voltage 3.0
