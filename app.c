@@ -32,9 +32,19 @@
 #include "sl_bluetooth.h"
 #include "app.h"
 #include "sl_mx25_flash_shutdown.h"
+#include "custom_adv.h"
+
+
+CustomAdv_t sData; // Our custom advertising data stored here
+
+uint8_t num_presses = 0;
+uint8_t last_press = 0xFF;
+
 
 // The advertising set handle allocated from Bluetooth stack.
 static uint8_t advertising_set_handle = 0xff;
+
+
 
 /**************************************************************************//**
  * Application Init.
@@ -97,15 +107,20 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
       // Set advertising interval to 100ms.
       sc = sl_bt_advertiser_set_timing(
         advertising_set_handle,
-        1600, // min. adv. interval (milliseconds * 1.6)
-        1600, // max. adv. interval (milliseconds * 1.6)
+        3200, // min. adv. interval (milliseconds * 1.6)
+        3200, // max. adv. interval (milliseconds * 1.6)
         0,   // adv. duration
         0);  // max. num. adv. events
       app_assert_status(sc);
-      // Start advertising and enable connections.
-      sc = sl_bt_legacy_advertiser_start(advertising_set_handle,
-                                         sl_bt_advertiser_connectable_scannable);
-      app_assert_status(sc);
+
+
+      fill_adv_packet(&sData, 0x06, 0x02FF, num_presses, last_press, "CustomAdvDemo1234567");
+      start_adv(&sData, advertising_set_handle);
+
+//      // Start advertising and enable connections.
+//      sc = sl_bt_legacy_advertiser_start(advertising_set_handle,
+//                                         sl_bt_advertiser_connectable_scannable);
+//      app_assert_status(sc);
       break;
 
     // -------------------------------

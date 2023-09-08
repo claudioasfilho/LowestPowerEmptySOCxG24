@@ -47,29 +47,20 @@ int main(void)
   // this call.
   sl_system_init();
 
-
-
   // Set voltage scaling for EM0/EM1, MCU Core is 39 MHz = low power
     EMU_VScaleEM01(emuVScaleEM01_LowPower, false);
     //EMU_VScaleEM01(emuVScaleEM01_HighPerformance, false);
-
-
 
   //  EMU_EM23Init_TypeDef em23Init = EMU_EM23INIT_DEFAULT;
   //  em23Init.vScaleEM23Voltage = emuVScaleEM23_LowPower;
   //  EMU_EM23Init(&em23Init);
 
-
-
     sl_power_manager_em23_voltage_scaling_enable_fast_wakeup(false);
 
-
-
-    // Power down upper 128KB of RAM during EM2.  xG24-RB4186C
+    // Power down RAM blocks 2 and above are powered off during EM2.  xG24-RB4186C
     // comes with superset part (256KB) so this must be disabled
-    // manually to resemble the production 128KB OPN.
+    //  (address range 0x20008000-0x20040000)
     SYSCFG->DMEM0RETNCTRL = 32766;
-
 
 
     // Disable debug in EM2.  This will make life inconvenient but

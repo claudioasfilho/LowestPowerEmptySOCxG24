@@ -76,7 +76,8 @@ app.o: ../app.c \
  /Users/clfilho/SimplicityStudio/SDKs/gecko-sdk-4_4_0_23Q4-IFC1-HADM//protocol/bluetooth/inc/sl_bt_api_compatibility.h \
  ../app.h \
  /Users/clfilho/SimplicityStudio/SDKs/gecko-sdk-4_4_0_23Q4-IFC1-HADM//hardware/driver/mx25_flash_shutdown/inc/sl_mx25_flash_shutdown_usart/sl_mx25_flash_shutdown.h \
- /Users/clfilho/SimplicityStudio/March-23/bt_soc_empty_MG24/config/sl_mx25_flash_shutdown_usart_config.h
+ /Users/clfilho/SimplicityStudio/March-23/bt_soc_empty_MG24/config/sl_mx25_flash_shutdown_usart_config.h \
+ ../custom_adv.h
 /Users/clfilho/SimplicityStudio/SDKs/gecko-sdk-4_4_0_23Q4-IFC1-HADM//platform/common/toolchain/inc/sl_gcc_preinclude.h:
 /Users/clfilho/SimplicityStudio/SDKs/gecko-sdk-4_4_0_23Q4-IFC1-HADM//platform/emlib/inc/em_common.h:
 /Users/clfilho/SimplicityStudio/SDKs/gecko-sdk-4_4_0_23Q4-IFC1-HADM//platform/Device/SiliconLabs/EFR32MG24/Include/em_device.h:
@@ -155,3 +156,4 @@ app.o: ../app.c \
 ../app.h:
 /Users/clfilho/SimplicityStudio/SDKs/gecko-sdk-4_4_0_23Q4-IFC1-HADM//hardware/driver/mx25_flash_shutdown/inc/sl_mx25_flash_shutdown_usart/sl_mx25_flash_shutdown.h:
 /Users/clfilho/SimplicityStudio/March-23/bt_soc_empty_MG24/config/sl_mx25_flash_shutdown_usart_config.h:
+../custom_adv.h:
